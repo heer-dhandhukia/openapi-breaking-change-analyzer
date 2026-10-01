@@ -4,5 +4,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [{ "path": "../impact" }, { "path": "../spec-diff" }, { "path": "../fe-index" }]
 }
