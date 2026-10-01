@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/spec-diff" },
+    { "path": "packages/fe-index" },
+    { "path": "packages/impact" },
+    { "path": "packages/report" },
+    { "path": "packages/cli" },
+    { "path": "packages/patcher" }
+  ]
+}
