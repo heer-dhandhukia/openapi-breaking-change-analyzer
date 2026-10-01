@@ -1,32 +1,13 @@
-export type ChangeKind =
-  | "endpoint-removed"
-  | "method-changed"
-  | "path-changed"
-  | "response-field-removed"
-  | "response-field-type-changed"
-  | "response-field-became-optional"
-  | "enum-value-removed"
-  | "request-field-added-required"
-  | "request-field-removed"
-  | "param-added-required";
+// Re-exported here so `@blast/impact` remains the one-stop import for all shared types per
+// SPEC.md's "Core types (packages/impact/src/types.ts)" -- the actual definitions live
+// with their producers (spec-diff produces SpecChange, fe-index produces UsageSite) to
+// avoid a circular workspace dependency, since impact itself depends on both for matching.
+// See DECISIONS.md.
+export type { ChangeKind, SpecChange } from "@blast/spec-diff";
+export type { UsageSite } from "@blast/fe-index";
 
-export interface SpecChange {
-  kind: ChangeKind;
-  operationId?: string;
-  method: string; // GET, POST ...
-  path: string; // /users/{id}
-  fieldPath?: string; // e.g. response.200.user.email (exact format TBD in Phase 1, see DECISIONS.md)
-  breaking: boolean;
-  detail: string; // human-readable
-}
-
-export interface UsageSite {
-  file: string;
-  line: number;
-  column: number;
-  kind: "endpoint-def" | "hook-call" | "field-access" | "story" | "mutation-arg";
-  symbol: string; // e.g. useGetUserQuery, data.user.email
-}
+import type { SpecChange } from "@blast/spec-diff";
+import type { UsageSite } from "@blast/fe-index";
 
 export interface Impact {
   change: SpecChange;

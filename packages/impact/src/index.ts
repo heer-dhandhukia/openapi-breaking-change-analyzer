@@ -1,2 +1,3 @@
-// SpecChange[] x fe-index -> Impact[]. Matching logic implemented in Phase 2.
 export * from "./types.js";
+export { matchImpacts } from "./match.js";
+export type { MatchResult } from "./match.js";
