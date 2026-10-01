@@ -6,6 +6,7 @@
     { "path": "packages/impact" },
     { "path": "packages/report" },
     { "path": "packages/cli" },
-    { "path": "packages/patcher" }
+    { "path": "packages/patcher" },
+    { "path": "evals" }
   ]
 }
