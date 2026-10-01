@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "updateUser",
+      "kind": "method-changed",
+      "confidence": "exact"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "getUser",
+      "kind": "response-field-became-optional",
+      "confidence": "exact"
+    }
+  ]
+}

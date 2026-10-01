@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "getUsers",
+      "kind": "response-field-removed",
+      "confidence": "exact"
+    }
+  ]
+}

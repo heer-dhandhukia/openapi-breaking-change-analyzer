@@ -1,0 +1,14 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "listPosts",
+      "kind": "response-field-type-changed",
+      "confidence": "possible"
+    },
+    {
+      "endpoint": "getPost",
+      "kind": "response-field-type-changed",
+      "confidence": "exact"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "updateUser",
+      "kind": "request-field-added-required",
+      "confidence": "exact"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "getUsers",
+      "kind": "enum-value-removed",
+      "confidence": "exact"
+    }
+  ]
+}

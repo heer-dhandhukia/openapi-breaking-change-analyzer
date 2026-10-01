@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "getPost",
+      "kind": "endpoint-removed",
+      "confidence": "exact"
+    }
+  ]
+}

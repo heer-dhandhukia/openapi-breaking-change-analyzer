@@ -1,0 +1,9 @@
+{
+  "expectedImpacts": [
+    {
+      "endpoint": "listPosts",
+      "kind": "param-added-required",
+      "confidence": "exact"
+    }
+  ]
+}

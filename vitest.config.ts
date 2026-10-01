@@ -6,7 +6,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
-    include: ["packages/*/src/**/*.test.ts", "test/**/*.test.ts", "action/src/**/*.test.mjs"],
+    include: ["packages/*/src/**/*.test.ts", "test/**/*.test.ts", "action/src/**/*.test.mjs", "evals/src/**/*.test.ts"],
     passWithNoTests: true,
     // Several suites spawn real `node` subprocesses that each build a fresh ts-morph
     // Project (cli.test.ts, localE2E.test.mjs) -- under parallel load the default 5s can
