@@ -1,0 +1,20 @@
+{
+  "name": "@blast/cli",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "blast": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@blast/spec-diff": "workspace:*",
+    "@blast/fe-index": "workspace:*",
+    "@blast/impact": "workspace:*",
+    "@blast/report": "workspace:*"
+  }
+}
