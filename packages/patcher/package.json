@@ -9,6 +9,8 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@blast/impact": "workspace:*"
+    "@anthropic-ai/sdk": "^0.129.0",
+    "@blast/impact": "workspace:*",
+    "diff": "^9.0.0"
   }
 }
