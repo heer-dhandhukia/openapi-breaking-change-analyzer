@@ -1,2 +1,16 @@
-// LLM patch + verify loop (tsc --noEmit, tests, optional Storybook build). Implemented in Phase 4.
-export {};
+export type { LlmClient, LlmResponse, LlmUsage, PatchAttempt, PatchOutcome, PatchRequest, PatchRunResult, VerifyResult, VerifyStatus } from "./types.js";
+export { AnthropicLlmClient } from "./anthropicLlmClient.js";
+export type { AnthropicLlmClientOptions } from "./anthropicLlmClient.js";
+export { MockLlmClient } from "./mockLlmClient.js";
+export { estimateCostUsd } from "./pricing.js";
+export { buildPrompt, buildRetryPrompt } from "./prompt.js";
+export { applyUnifiedDiff } from "./applyDiff.js";
+export type { ApplyDiffResult } from "./applyDiff.js";
+export { verify } from "./verify.js";
+export type { VerifyOptions } from "./verify.js";
+export { groupExactImpactsByFile } from "./groupByFile.js";
+export { createScratchBranch, commitAll, discardUncommittedChanges, currentBranch } from "./scratchBranch.js";
+export { pushAndOpenDraftPr } from "./openDraftPr.js";
+export type { OpenDraftPrOptions, ExecFileFn } from "./openDraftPr.js";
+export { runPatchForFile, runPatcher } from "./patcher.js";
+export type { RunPatchForFileOptions, RunPatcherOptions, RunPatcherResult } from "./patcher.js";
