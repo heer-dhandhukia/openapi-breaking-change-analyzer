@@ -1,0 +1,41 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "request-field-removed",
+        "operationId": "createPost",
+        "method": "POST",
+        "path": "/posts",
+        "fieldPath": "request.body.title",
+        "breaking": true,
+        "detail": "removed the request property `title`"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "createPost",
+        "file": "fixtures/demo-frontend/src/api/generatedApi.ts",
+        "line": 23
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/CreatePostForm.tsx",
+          "line": 5,
+          "column": 39,
+          "kind": "hook-call",
+          "symbol": "useCreatePostMutation",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/CreatePostForm.tsx",
+          "line": 11,
+          "column": 10,
+          "kind": "mutation-arg",
+          "symbol": "createPost",
+          "confidence": "exact"
+        }
+      ],
+      "stories": []
+    }
+  ],
+  "unmatched": []
+}

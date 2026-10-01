@@ -1,0 +1,63 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "response-field-type-changed",
+        "operationId": "listPosts",
+        "method": "GET",
+        "path": "/posts",
+        "fieldPath": "response.200.[].published",
+        "breaking": true,
+        "detail": "the `items/published` response's property `type` changed from `boolean` to `string` for status `200` (boolean -> string)"
+      },
+      "confidence": "possible",
+      "endpoint": {
+        "name": "listPosts",
+        "file": "fixtures/demo-frontend/src/api/baseApi.ts",
+        "line": 21
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/PostList.tsx",
+          "line": 12,
+          "column": 37,
+          "kind": "field-access",
+          "symbol": "posts[]",
+          "confidence": "possible"
+        }
+      ],
+      "stories": [
+        "fixtures/demo-frontend/stories/PostList.stories.tsx"
+      ]
+    },
+    {
+      "change": {
+        "kind": "response-field-type-changed",
+        "operationId": "getPost",
+        "method": "GET",
+        "path": "/posts/{postId}",
+        "fieldPath": "response.200.post.published",
+        "breaking": true,
+        "detail": "the `post/published` response's property `type` changed from `boolean` to `string` for status `200` (boolean -> string)"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "getPost",
+        "file": "fixtures/demo-frontend/src/api/generatedApi.ts",
+        "line": 19
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/PostBadge.tsx",
+          "line": 8,
+          "column": 21,
+          "kind": "field-access",
+          "symbol": "data.post.published",
+          "confidence": "exact"
+        }
+      ],
+      "stories": []
+    }
+  ],
+  "unmatched": []
+}

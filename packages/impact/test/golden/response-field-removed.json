@@ -1,0 +1,33 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "response-field-removed",
+        "operationId": "getUsers",
+        "method": "GET",
+        "path": "/users",
+        "fieldPath": "response.200.users[].role",
+        "breaking": true,
+        "detail": "removed the required property `users/items/role` from the response with the `200` status"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "getUsers",
+        "file": "fixtures/demo-frontend/src/api/generatedApi.ts",
+        "line": 15
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/UsersTable.tsx",
+          "line": 12,
+          "column": 18,
+          "kind": "field-access",
+          "symbol": "data.users[].role",
+          "confidence": "exact"
+        }
+      ],
+      "stories": []
+    }
+  ],
+  "unmatched": []
+}

@@ -1,0 +1,72 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "path-changed",
+        "operationId": "getPost",
+        "method": "GET",
+        "path": "/posts/{postId}",
+        "breaking": true,
+        "detail": "api path removed without deprecation (now /posts/{postId}/full)"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "getPost",
+        "file": "fixtures/demo-frontend/src/api/generatedApi.ts",
+        "line": 19
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/PostBadge.tsx",
+          "line": 6,
+          "column": 20,
+          "kind": "hook-call",
+          "symbol": "useGetPostQuery",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostBadge.tsx",
+          "line": 8,
+          "column": 21,
+          "kind": "field-access",
+          "symbol": "data.post.published",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostBadge.tsx",
+          "line": 8,
+          "column": 51,
+          "kind": "field-access",
+          "symbol": "data.post.title",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostDetail.tsx",
+          "line": 4,
+          "column": 20,
+          "kind": "hook-call",
+          "symbol": "useGetPostQuery",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostDetail.tsx",
+          "line": 12,
+          "column": 12,
+          "kind": "field-access",
+          "symbol": "data.post.title",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostDetail.tsx",
+          "line": 13,
+          "column": 11,
+          "kind": "field-access",
+          "symbol": "data.post.body",
+          "confidence": "exact"
+        }
+      ],
+      "stories": []
+    }
+  ],
+  "unmatched": []
+}

@@ -1,0 +1,59 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "param-added-required",
+        "operationId": "listPosts",
+        "method": "GET",
+        "path": "/posts",
+        "fieldPath": "request.query.authorId",
+        "breaking": true,
+        "detail": "added the new required `query` request parameter `authorId`"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "listPosts",
+        "file": "fixtures/demo-frontend/src/api/baseApi.ts",
+        "line": 21
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/PostList.tsx",
+          "line": 7,
+          "column": 27,
+          "kind": "hook-call",
+          "symbol": "useListPostsQuery",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostList.tsx",
+          "line": 11,
+          "column": 8,
+          "kind": "field-access",
+          "symbol": "posts",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostList.tsx",
+          "line": 12,
+          "column": 24,
+          "kind": "field-access",
+          "symbol": "posts[].id",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/PostList.tsx",
+          "line": 12,
+          "column": 37,
+          "kind": "field-access",
+          "symbol": "posts[]",
+          "confidence": "possible"
+        }
+      ],
+      "stories": [
+        "fixtures/demo-frontend/stories/PostList.stories.tsx"
+      ]
+    }
+  ],
+  "unmatched": []
+}

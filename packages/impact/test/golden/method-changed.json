@@ -1,0 +1,42 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "method-changed",
+        "operationId": "updateUser",
+        "method": "PATCH",
+        "path": "/users/{id}",
+        "breaking": true,
+        "detail": "api removed without deprecation (now PUT /users/{id})"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "updateUser",
+        "file": "fixtures/demo-frontend/src/api/baseApi.ts",
+        "line": 13
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/UpdateUserForm.tsx",
+          "line": 5,
+          "column": 39,
+          "kind": "hook-call",
+          "symbol": "useUpdateUserMutation",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/UpdateUserForm.tsx",
+          "line": 10,
+          "column": 10,
+          "kind": "mutation-arg",
+          "symbol": "updateUser",
+          "confidence": "exact"
+        }
+      ],
+      "stories": [
+        "fixtures/demo-frontend/stories/UpdateUserForm.stories.tsx"
+      ]
+    }
+  ],
+  "unmatched": []
+}

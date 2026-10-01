@@ -1,0 +1,44 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "response-field-became-optional",
+        "operationId": "getUserById",
+        "method": "GET",
+        "path": "/users/{id}",
+        "fieldPath": "response.200.user.email",
+        "breaking": true,
+        "detail": "the response property `user/email` became optional for the status `200`"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "getUser",
+        "file": "fixtures/demo-frontend/src/api/baseApi.ts",
+        "line": 9
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/UserProfile.tsx",
+          "line": 16,
+          "column": 11,
+          "kind": "field-access",
+          "symbol": "data.user.email",
+          "confidence": "exact"
+        },
+        {
+          "file": "fixtures/demo-frontend/src/components/UserCard.tsx",
+          "line": 9,
+          "column": 14,
+          "kind": "field-access",
+          "symbol": "data.user.email",
+          "confidence": "exact"
+        }
+      ],
+      "stories": [
+        "fixtures/demo-frontend/stories/UserCard.stories.tsx",
+        "fixtures/demo-frontend/stories/UserProfile.stories.tsx"
+      ]
+    }
+  ],
+  "unmatched": []
+}

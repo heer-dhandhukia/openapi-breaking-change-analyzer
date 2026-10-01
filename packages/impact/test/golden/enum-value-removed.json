@@ -1,0 +1,33 @@
+{
+  "impacts": [
+    {
+      "change": {
+        "kind": "enum-value-removed",
+        "operationId": "getUsers",
+        "method": "GET",
+        "path": "/users",
+        "fieldPath": "response.200.users[].role",
+        "breaking": false,
+        "detail": "removed the `guest` enum value from the `users/items/role` response property for the response status `200` (guest)"
+      },
+      "confidence": "exact",
+      "endpoint": {
+        "name": "getUsers",
+        "file": "fixtures/demo-frontend/src/api/generatedApi.ts",
+        "line": 15
+      },
+      "sites": [
+        {
+          "file": "fixtures/demo-frontend/src/components/UsersTable.tsx",
+          "line": 12,
+          "column": 18,
+          "kind": "field-access",
+          "symbol": "data.users[].role",
+          "confidence": "exact"
+        }
+      ],
+      "stories": []
+    }
+  ],
+  "unmatched": []
+}
