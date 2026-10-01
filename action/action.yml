@@ -1,0 +1,78 @@
+name: "API Blast Radius"
+description: "Reports which frontend code breaks when a backend PR changes an OpenAPI spec, as a sticky PR comment."
+inputs:
+  config-path:
+    description: "Path to the .blastradius.yml config file, relative to the backend repo root."
+    required: false
+    default: ".blastradius.yml"
+  github-token:
+    description: "Token used to check out frontend repos and to read/post the PR comment. Needs read access to the frontend repos and pull-requests: write on this repo."
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Install oasdiff
+      shell: bash
+      run: |
+        set -euo pipefail
+        curl -sL -o /tmp/oasdiff.tar.gz \
+          https://github.com/oasdiff/oasdiff/releases/download/v1.32.1/oasdiff_1.32.1_linux_amd64.tar.gz
+        tar xzf /tmp/oasdiff.tar.gz -C /tmp oasdiff
+        chmod +x /tmp/oasdiff
+        echo "/tmp" >> "$GITHUB_PATH"
+
+    - name: Build the blast CLI
+      shell: bash
+      working-directory: ${{ github.action_path }}/..
+      run: |
+        corepack enable
+        pnpm install --frozen-lockfile
+        pnpm run build
+
+    - name: Parse .blastradius.yml
+      id: config
+      shell: bash
+      run: node "${{ github.action_path }}/scripts/parse-config.mjs" "${{ inputs.config-path }}"
+
+    - name: Extract the base spec (pre-PR version)
+      id: base-spec
+      shell: bash
+      run: |
+        set -euo pipefail
+        git show "${{ github.event.pull_request.base.sha }}:${{ steps.config.outputs.spec }}" > /tmp/blast-base-spec.yaml
+        echo "path=/tmp/blast-base-spec.yaml" >> "$GITHUB_OUTPUT"
+
+    - name: Check out frontend repos
+      id: frontends
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+      run: node "${{ github.action_path }}/scripts/checkout-frontends.mjs"
+
+    - name: Run blast analyze
+      shell: bash
+      run: |
+        node "${{ github.action_path }}/../packages/cli/dist/index.js" analyze \
+          --base "${{ steps.base-spec.outputs.path }}" \
+          --head "${{ steps.config.outputs.spec }}" \
+          --frontend "${{ steps.frontends.outputs.frontend-dirs }}" \
+          --json /tmp/blast-report.json \
+          --md /tmp/blast-report.md
+
+    - name: Post sticky PR comment
+      if: always()
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        GH_REPO: ${{ github.repository }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+      run: node "${{ github.action_path }}/scripts/post-sticky-comment.mjs" /tmp/blast-report.md
+
+    - name: Enforce failOn policy
+      shell: bash
+      run: node "${{ github.action_path }}/scripts/check-fail.mjs" /tmp/blast-report.json "${{ steps.config.outputs.fail-on }}"
