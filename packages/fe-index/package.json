@@ -6,6 +6,13 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "print:demo": "node scripts/print-demo-index.mjs",
+    "gen:synthetic-repo": "node scripts/generate-synthetic-repo.mjs",
+    "bench": "node scripts/bench.mjs"
+  },
+  "dependencies": {
+    "@blast/spec-diff": "workspace:*",
+    "ts-morph": "^28.0.0"
   }
 }
